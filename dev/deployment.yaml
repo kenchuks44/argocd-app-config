@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: my-deployment
 spec:
+  replicas: 3
   selector:
     matchLabels:
-      app: myapp
-  replicas: 2
+      app: my-app
   template:
     metadata:
       labels:
-        app: myapp
+        app: my-app
     spec:
       containers:
-      - name: myapp
-        image: nanajanashia/argocd-app:1.2
+      - name: my-container
+        image: kenchuks44/my-repo:reactapp-1.0
         ports:
         - containerPort: 8080
+      imagePullSecrets:
+      - name: my-dockerhub-secret
