@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: my-app
@@ -17,5 +17,4 @@ spec:
         image: docker.io/kenchuks44/my-repo:jma-1.0
         ports:
         - containerPort: 8080
-      imagePullSecrets:
-      - name: my-secret
+    
