@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-container
-        image: kenchuks44/my-repo:jma-1.0
+        image: kenchuks44/my-repo:jma-2.1
         ports:
         - containerPort: 8080
       imagePullSecrets:
