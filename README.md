@@ -4,11 +4,10 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 # To access ArgoCD UI
 kubectl get svc -n argocd
-kubectl port-forward svc/argocd-server 8080:443 -n argocd
+kubectl patch svc argo-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 
 # Login with admin user and below token (as in documentation):
-kubectl -n argocd get secret argocd-initial-admin-secret -o yaml
-echo <argocd-initial-admin-secret> | base64 --decode
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
 
 # you can change and delete init password
 
